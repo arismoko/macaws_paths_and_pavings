@@ -15,7 +15,7 @@
 #      false/true, 5 flattened x false/true all read back;
 #   4. the shapes are upstream's, not the template's: a player dropped on the
 #      block lands at 81.0 (engraved=false, full cube), 80.9375
-#      (engraved=true, 15/16), 80.99 (path, 0.01..0.99), with vanilla stone
+#      (engraved=true, 15/16), 80.061875 (path, 0.01..0.99 pixels), with vanilla stone
 #      (81.0) and vanilla dirt_path (80.9375) as same-run baselines;
 #   5. representative items place: a wooden path (facing), a slab (type), a
 #      stair (facing/half), a paving and a soil path;
@@ -352,7 +352,7 @@ drop_onto "minecraft:stone" 81.0 "vanilla stone baseline (full cube)"
 drop_onto "minecraft:dirt_path" 80.9375 "vanilla dirt_path baseline (15/16)"
 drop_onto "mcwpaths:stone_crystal_floor[engraved=false]" 81.0 "engraved=false (full cube)"
 drop_onto "mcwpaths:stone_crystal_floor[engraved=true]" 80.9375 "engraved=true (15/16)"
-drop_onto "mcwpaths:stone_running_bond_path" 80.99 "path (0.01..0.99)"
+drop_onto "mcwpaths:stone_running_bond_path" 80.061875 "path (0.01..0.99 pixels)"
 drop_onto "mcwpaths:dirt_path_block[flattened=false]" 81.0 "flattened=false (full cube)"
 drop_onto "mcwpaths:dirt_path_block[flattened=true]" 80.9375 "flattened=true (15/16)"
 ctl setblock 60 80 50 minecraft:air >/dev/null
@@ -534,6 +534,6 @@ echo "unknown ids refused, vanilla stone places, a stick places nothing"
 
 # ---------------------------------------------------------------- evidence
 cp "$SCRATCH/paving.png" "$PORT/tools/.e2e-last-paving.png" 2>/dev/null || true
-echo "PASS: ${#BLOCKS[@]}/315 block ids bind, ${#FACING[@]} facing x 4, ${#SLABS[@]} slabs x 3, ${#STAIRS[@]} stairs x 4, ${#ENGRAVED[@]} engraved x 2 and ${#FLATTENED[@]} flattened x 2 states read back, the three upstream shapes are the collision (81.0 / 80.9375 / 80.99 vs vanilla stone/dirt_path), representative items place with their state, a paving drops itself while vanilla stone drops cobblestone, the paving renders (screenshot differs, no missing texture), the creative tab lists 315 items, and unknown ids are refused"
+echo "PASS: ${#BLOCKS[@]}/315 block ids bind, ${#FACING[@]} facing x 4, ${#SLABS[@]} slabs x 3, ${#STAIRS[@]} stairs x 4, ${#ENGRAVED[@]} engraved x 2 and ${#FLATTENED[@]} flattened x 2 states read back, the three upstream shapes are the collision (81.0 / 80.9375 / 80.061875 vs vanilla stone/dirt_path), representative items place with their state, a paving drops itself while vanilla stone drops cobblestone, the paving renders (screenshot differs, no missing texture), the creative tab lists 315 items, and unknown ids are refused"
 echo "EXIT:0"
 exit 0

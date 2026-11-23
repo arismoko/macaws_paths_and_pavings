@@ -45,7 +45,8 @@ MAP_COLORS = [
 
 # The shape upstream gives every PathBlock/FacingPathBlock
 # (`PathBlock.SHAPE = Block.box(0, 0.01, 0, 16, 0.99, 16)`).
-PATH_SHAPE = [[0.0, 0.01, 0.0, 1.0, 0.99, 1.0]]
+# Block.box takes pixels: 0.01/16 and 0.99/16 of a block.
+PATH_SHAPE = [[0.0, 0.000625, 0.0, 1.0, 0.061875, 1.0]]
 CUBE = [[0.0, 0.0, 0.0, 1.0, 1.0, 1.0]]
 ENGRAVED_SHAPE = [[0.0, 0.0, 0.0, 1.0, 15.0 / 16.0, 1.0]]
 
