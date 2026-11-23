@@ -1,0 +1,22 @@
+summary = "315 paths, pavings, slabs and stairs in stone, brick, wood and soil styles."
+description = """
+315 paths, pavings, slabs and stairs in stone, brick, wood and soil styles.
+
+A port of [Macaw's Paths and Pavings](https://github.com/sketchmacaw/Paths-Pavings) by Sketch Macaw and Peachy Macaw to [Sunrise](https://playsunrise.net) (Minecraft Java 26.3), as a content mod: the original's blocks, models, textures, recipes and strings, with no code.
+
+What it does:
+
+- 130 thin path and paving blocks, 24 facing paths, 52 engraved pavings and 5 flattened soil paths, with the original's shapes.
+- 52 slabs and 52 stairs to match.
+- Stonecutter and crafting recipes, drops, advancements and a creative tab.
+
+Differences from the original:
+
+- Engraving a paving and flattening soil with a tool are Java code and don't work; the engraved and flattened blocks come from the stonecutter or creative.
+- No tooltips on the engraved and flattened blocks.
+"""
+categories = ["decoration"]
+
+[[screenshots]]
+path = "page/world.png"
+caption = "Paths and pavings laid in a garden."
