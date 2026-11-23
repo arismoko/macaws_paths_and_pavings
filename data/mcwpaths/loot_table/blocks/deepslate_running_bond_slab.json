@@ -8,11 +8,11 @@
             {
               "add": false,
               "condition": {
-                "block": "mcwpaths:deepslate_running_bond_slab",
-                "properties": {
+                "type": "minecraft:match_block",
+                "blocks": "mcwpaths:deepslate_running_bond_slab",
+                "state": {
                   "type": "double"
-                },
-                "type": "minecraft:block_state_property"
+                }
               },
               "count": 2.0,
               "type": "minecraft:set_count"

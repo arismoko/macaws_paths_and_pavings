@@ -8,11 +8,11 @@
             {
               "add": false,
               "condition": {
-                "block": "mcwpaths:stone_flagstone_slab",
-                "properties": {
+                "type": "minecraft:match_block",
+                "blocks": "mcwpaths:stone_flagstone_slab",
+                "state": {
                   "type": "double"
-                },
-                "type": "minecraft:block_state_property"
+                }
               },
               "count": 2.0,
               "type": "minecraft:set_count"
