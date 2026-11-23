@@ -6,7 +6,7 @@ A port of [Macaw's Paths and Pavings](https://github.com/sketchmacaw/Paths-Pavin
 
 ## What it does
 
-- 130 thin path and paving blocks, 25 facing paths (pale oak included), 52 engraved pavings and 5 flattened soil paths, with the original's shapes.
+- 130 thin path and paving blocks, 26 facing paths (pale oak and poplar included), 52 engraved pavings and 5 flattened soil paths, with the original's shapes.
 - Right-click an engraved paving's block with a pickaxe to engrave it and with a shovel on a soil path block to flatten it, as in the original: the block drops 1/16 in height, a sound plays and the tool loses one durability (not in creative).
 - Wooden paths and dumble pavings are placed turned a quarter clockwise from where you look.
 - The engraving and flattening blocks say how to use them in their tooltip.

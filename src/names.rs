@@ -66,7 +66,7 @@ pub const FLATTENED: [&str; 5] = [
 ];
 
 /// `FacingPathBlock`: placed turned a quarter clockwise from where the placer looks.
-pub const FACING: [&str; 25] = [
+pub const FACING: [&str; 26] = [
     "acacia_planks_path",
     "andesite_dumble_paving",
     "bamboo_planks_path",
@@ -88,6 +88,7 @@ pub const FACING: [&str; 25] = [
     "mud_brick_dumble_paving",
     "oak_planks_path",
     "pale_oak_planks_path",
+    "poplar_planks_path",
     "red_sandstone_dumble_paving",
     "sandstone_dumble_paving",
     "spruce_planks_path",

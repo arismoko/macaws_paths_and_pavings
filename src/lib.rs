@@ -174,8 +174,9 @@ mod tests {
     }
 
     #[test]
-    fn pale_oak_is_among_the_facing_paths() {
+    fn pale_oak_and_poplar_are_among_the_facing_paths() {
         assert!(names::FACING.contains(&"pale_oak_planks_path"));
-        assert_eq!(names::FACING.len(), 25);
+        assert!(names::FACING.contains(&"poplar_planks_path"));
+        assert_eq!(names::FACING.len(), 26);
     }
 }
