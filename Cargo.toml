@@ -1,0 +1,10 @@
+[package]
+name = "mcwpaths"
+version = "0.2.3"
+edition = "2024"
+license = "MIT"
+description = "Macaw's Paths and Pavings for Sunrise: engraving, flattening, placement and tooltips"
+
+[dependencies]
+# The pinned SDK's API crate, fetched into .sunrise/sdk/ by any `cargo sunrise-mod` command.
+sunrise-mod-api = { path = ".sunrise/sdk/api/crates/sunrise-mod-api" }

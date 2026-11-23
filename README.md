@@ -1,19 +1,21 @@
 # Macaw's Paths and Pavings for Sunrise
 
-315 paths, pavings, slabs and stairs in stone, brick, wood and soil styles.
+316 paths, pavings, slabs and stairs in stone, brick, wood and soil styles.
 
-A port of [Macaw's Paths and Pavings](https://github.com/sketchmacaw/Paths-Pavings) by Sketch Macaw and Peachy Macaw to [Sunrise](https://playsunrise.net) (Minecraft Java 26.3), as a content mod: the original's blocks, models, textures, recipes and strings, with no code.
+A port of [Macaw's Paths and Pavings](https://github.com/sketchmacaw/Paths-Pavings) by Sketch Macaw and Peachy Macaw to [Sunrise](https://playsunrise.net) (Minecraft Java 26.3), as a content mod with a small native part: the original's blocks, models, textures, recipes and strings, plus its tools and placement rules.
 
 ## What it does
 
-- 130 thin path and paving blocks, 24 facing paths, 52 engraved pavings and 5 flattened soil paths, with the original's shapes.
+- 130 thin path and paving blocks, 25 facing paths (pale oak included), 52 engraved pavings and 5 flattened soil paths, with the original's shapes.
+- Right-click an engraved paving's block with a pickaxe to engrave it and with a shovel on a soil path block to flatten it, as in the original: the block drops 1/16 in height, a sound plays and the tool loses one durability (not in creative).
+- Wooden paths and dumble pavings are placed turned a quarter clockwise from where you look.
+- The engraving and flattening blocks say how to use them in their tooltip.
 - 52 slabs and 52 stairs to match.
 - Stonecutter and crafting recipes, drops, advancements and a creative tab.
 
 ## Differences from the original
 
-- Engraving a paving and flattening soil with a tool are Java code and don't work; the engraved and flattened blocks come from the stonecutter or creative.
-- No tooltips on the engraved and flattened blocks.
+- The wooden paths do not carry the original's `forceSolidOn` flag: the block declaration cannot set it.
 
 ## Building
 
