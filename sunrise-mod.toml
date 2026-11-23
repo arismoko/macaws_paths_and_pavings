@@ -1,7 +1,7 @@
 # Macaw's Paths and Pavings for Sunrise: content only (data/ and assets/), no code.
 id = "mcwpaths"
 name = "Macaw's Paths and Pavings"
-version = "0.2.1"
+version = "0.2.2"
 description = "315 paths, pavings, slabs and stairs in stone, brick, wood and soil styles."
 authors = ["Sketch Macaw", "Peachy Macaw"]
 license = "MIT"
