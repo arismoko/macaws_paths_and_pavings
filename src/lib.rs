@@ -11,8 +11,6 @@
 pub mod names;
 pub mod rules;
 
-use std::time::{SystemTime, UNIX_EPOCH};
-
 use mod_api::{
     self, BlockPart, BlockUpdateFlags, ClientHost, EquipmentSlot, Hand, Hooks, InteractionResult,
     ItemPart, LevelSide, LivingRef, Registrar, RegistrationContext, ServerHost, SoundSource, Text,
@@ -50,9 +48,10 @@ impl BlockPart for Use {
         let next = host.block_state_id(&next)?;
         let level = host.level(click.dimension.key().id())?;
         let [x, y, z] = click.pos;
-        let unit = SystemTime::now()
-            .duration_since(UNIX_EPOCH)
-            .map_or(0.0, |t| (t.subsec_nanos() % 1_000_000) as f32 / 1_000_000.0);
+        // `level.getRandom().nextFloat()`, drawn from the level's own stream.
+        let unit = level
+            .with_random(host, |random| random.next_float())
+            .unwrap_or(0.5);
         let _ = level.play_sound(
             host,
             self.0.sound(),
