@@ -1,23 +1,29 @@
 {
- "properties": {
-  "explosion_resistance": 3.0,
-  "friction": 0.6,
-  "hardness": 2.0,
-  "map_color": 2,
-  "requires_tool": false,
-  "sounds": "minecraft:birch_planks"
- },
- "shapes": {
-  "default": [
-   [
-    0.0,
-    0.01,
-    0.0,
-    1.0,
-    0.99,
-    1.0
-   ]
-  ]
- },
- "template": "minecraft:carved_pumpkin"
+  "properties": {
+    "explosion_resistance": 3.0,
+    "friction": 0.6,
+    "hardness": 2.0,
+    "map_color": 2,
+    "requires_tool": false,
+    "sounds": "minecraft:birch_planks"
+  },
+  "shapes": {
+    "default": [
+      [
+        0.0,
+        0.01,
+        0.0,
+        1.0,
+        0.99,
+        1.0
+      ]
+    ]
+  },
+  "template": "minecraft:carved_pumpkin",
+  "components": {
+    "minecraft:cooking_fuel": {
+      "burn_time": 50,
+      "speed_multiplier": "minecraft:cooking/speed_default"
+    }
+  }
 }
