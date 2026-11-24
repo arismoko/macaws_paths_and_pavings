@@ -1,16 +1,24 @@
 //! The rules of the original's three block classes, over plain values so `cargo test` checks
 //! them without a game.
 
-/// `FacingPathBlock.getStateForPlacement`: the facing is `getHorizontalDirection().getClockWise()`.
-/// The horizontal direction is `Direction.fromYRot(yaw)`.
-pub fn placed_facing(yaw: f32) -> &'static str {
+/// `Direction.fromYRot(yaw)`: the horizontal direction a player looks along.
+pub fn looking(yaw: f32) -> &'static str {
     // 2D data values: south 0, west 1, north 2, east 3.
-    let looking = ((f64::from(yaw) / 90.0 + 0.5).floor() as i64).rem_euclid(4);
-    match looking {
-        0 => "west",
-        1 => "north",
-        2 => "east",
-        _ => "south",
+    match ((f64::from(yaw) / 90.0 + 0.5).floor() as i64).rem_euclid(4) {
+        0 => "south",
+        1 => "west",
+        2 => "north",
+        _ => "east",
+    }
+}
+
+/// `FacingPathBlock.getStateForPlacement`: the facing is `getHorizontalDirection().getClockWise()`.
+pub fn placed_facing(horizontal: &str) -> &'static str {
+    match horizontal {
+        "north" => "east",
+        "east" => "south",
+        "south" => "west",
+        _ => "north",
     }
 }
 
@@ -83,13 +91,16 @@ mod tests {
     #[test]
     fn facing_is_a_quarter_clockwise_of_where_the_placer_looks() {
         // Yaw 0 looks south, 90 west, 180 north, 270 (or -90) east.
-        assert_eq!(placed_facing(0.0), "west");
-        assert_eq!(placed_facing(90.0), "north");
-        assert_eq!(placed_facing(180.0), "east");
-        assert_eq!(placed_facing(-90.0), "south");
-        assert_eq!(placed_facing(44.0), "west");
-        assert_eq!(placed_facing(46.0), "north");
-        assert_eq!(placed_facing(-360.0), "west");
+        let facing = |yaw| placed_facing(looking(yaw));
+        assert_eq!(facing(0.0), "west");
+        assert_eq!(facing(90.0), "north");
+        assert_eq!(facing(180.0), "east");
+        assert_eq!(facing(-90.0), "south");
+        assert_eq!(facing(44.0), "west");
+        assert_eq!(facing(46.0), "north");
+        assert_eq!(facing(-360.0), "west");
+        // A dispenser's `DirectionalPlaceContext` facing up or down looks north.
+        assert_eq!(placed_facing("north"), "east");
     }
 
     #[test]

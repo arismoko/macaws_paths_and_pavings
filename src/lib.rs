@@ -12,9 +12,9 @@ pub mod names;
 pub mod rules;
 
 use mod_api::{
-    self, BlockPart, BlockUpdateFlags, ClientHost, EquipmentSlot, Hand, Hooks, InteractionResult,
-    ItemPart, LevelSide, LivingRef, Registrar, RegistrationContext, ServerHost, SoundSource, Text,
-    TooltipEvent, UseItemOnEvent,
+    self, BlockPart, BlockUpdateFlags, ClientHost, Direction, EquipmentSlot, Hand, Hooks,
+    InteractionResult, ItemPart, LevelSide, LivingRef, PlacementSource, Registrar,
+    RegistrationContext, ServerHost, SoundSource, Text, TooltipEvent, UseItemOnEvent,
 };
 
 use rules::Tool;
@@ -91,7 +91,19 @@ impl BlockPart for Facing {
     ) -> Option<Option<mod_api::BlockState>> {
         let (LevelSide::Server(level) | LevelSide::Client(level)) = level;
         let block = level.state_block(event.state)?;
-        let facing = rules::placed_facing(event.context.yaw);
+        // `getHorizontalDirection`: the player's view, or a `DirectionalPlaceContext`'s
+        // direction (north when it points up or down).
+        let horizontal = match event.context.source {
+            PlacementSource::Player { yaw, .. } => rules::looking(yaw),
+            PlacementSource::Directional { direction } => match direction {
+                Direction::South => "south",
+                Direction::West => "west",
+                Direction::East => "east",
+                _ => "north",
+            },
+            _ => "north",
+        };
+        let facing = rules::placed_facing(horizontal);
         Some(level.block_state_id(&format!("{block}[facing={facing}]")))
     }
 }
