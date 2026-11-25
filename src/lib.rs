@@ -118,7 +118,7 @@ pub struct Tip(&'static str);
 
 #[mod_api::sunrise_part]
 impl ItemPart for Tip {
-    fn tooltip(&self, _host: &dyn ClientHost, event: &mut TooltipEvent<'_>) {
+    fn tooltip(&self, _host: &dyn ClientHost, event: &mut TooltipEvent<'_, '_>) {
         let _ = event
             .lines
             .push((Text::translate(self.0, Vec::new()), GRAY));
