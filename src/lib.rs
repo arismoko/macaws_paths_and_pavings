@@ -12,9 +12,9 @@ pub mod names;
 pub mod rules;
 
 use mod_api::{
-    self, BlockPart, BlockUpdateFlags, ClientHost, Direction, EquipmentSlot, Hand, Hooks,
+    self, BlockPart, BlockUpdateFlags, ClientHost, Direction, EquipmentSlot, Hand, Hooks, HostSide,
     InteractionResult, ItemPart, LevelSide, LivingRef, PlacementSource, Registrar,
-    RegistrationContext, ServerHost, SoundSource, Text, TooltipEvent, UseItemOnEvent,
+    RegistrationContext, SoundSource, Text, TooltipEvent, UseItemOnEvent,
 };
 
 use rules::Tool;
@@ -30,9 +30,13 @@ pub struct Use(pub Tool);
 impl BlockPart for Use {
     fn use_item_on(
         &self,
-        host: &mut dyn ServerHost,
+        host: HostSide<'_>,
         event: &mut UseItemOnEvent<'_>,
     ) -> Option<InteractionResult> {
+        // The client predicts nothing of its own: the template's answer stands there.
+        let HostSide::Server(host) = host else {
+            return None;
+        };
         let click = event.click;
         let stack = click.stack?;
         let wanted = self.0.tag();
@@ -115,7 +119,7 @@ pub struct Tip(&'static str);
 #[mod_api::sunrise_part]
 impl ItemPart for Tip {
     fn tooltip(&self, _host: &dyn ClientHost, event: &mut TooltipEvent<'_>) {
-        event
+        let _ = event
             .lines
             .push((Text::translate(self.0, Vec::new()), GRAY));
     }
